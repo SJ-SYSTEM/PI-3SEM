@@ -123,3 +123,8 @@ Por se tratar de uma farmácia de pequeno porte, o projeto deve manter uma estru
 ## Mapa do site 
 
 ![alt text](image-1.png)
+
+
+## Wireframe Low-Fi
+
+![alt text](image-2.png)
