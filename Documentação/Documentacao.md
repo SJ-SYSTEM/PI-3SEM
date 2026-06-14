@@ -120,4 +120,6 @@ Por se tratar de uma farmácia de pequeno porte, o projeto deve manter uma estru
 * Teste de usabilidade da interface reformulada.
 
 
+## Mapa do site 
 
+![alt text](image-1.png)
