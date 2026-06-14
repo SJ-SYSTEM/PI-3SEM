@@ -1,4 +1,4 @@
-# SJ Farma System — Sistema de Gestão para Farmácia
+<h1 align="center">SJ Farma System — Sistema de Gestão para Farmácia</h1>
 
 
 <h4 align="center">Logo</h4>
