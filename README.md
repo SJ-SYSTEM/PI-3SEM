@@ -1,7 +1,11 @@
 # SJ Farma System — Sistema de Gestão para Farmácia
-#### Logo
 
-<img width="250px" alt="FarmaciaLogo" src="https://github.com/user-attachments/assets/b4190b0e-c0ac-4e14-b6df-596dec06a6d2" />
+
+<h4 align="center">Logo</h4>
+
+<p align="center">
+  <img width="250px" alt="FarmaciaLogo" src="https://github.com/user-attachments/assets/b4190b0e-c0ac-4e14-b6df-596dec06a6d2" />
+</p>
 
 
 <br>
