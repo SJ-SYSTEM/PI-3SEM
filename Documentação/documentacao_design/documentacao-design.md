@@ -13,7 +13,7 @@
 
 ## Requisitos de IHC – Canvas
 
-![alt text](image.png)
+![Canvas](imagens_design/canvas.png)
 
 # Detalhamento do Canvas 
 
@@ -122,13 +122,16 @@ Por se tratar de uma farmácia de pequeno porte, o projeto deve manter uma estru
 
 ## Mapa do site 
 
-![alt text](image-1.png)
+![Mapa do site](imagens_design/mapa-teste.png)
 
 
 ## Wireframe Low-Fi
 
-![alt text](image-2.png)
+![Wireframe Low-Fi](imagens_design/wireframe-lowfi.png)
+
 
 ## Style Guide Geral 
 
-![alt text](image-3.png)
+![Style Guide](imagens_design/style-guide.png)
+
+
