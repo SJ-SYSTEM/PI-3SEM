@@ -82,14 +82,19 @@ Este projeto **não tem como foco a emissão de notas fiscais**, mas sim o uso d
 
 ## Tecnologias Utilizadas
 
-* **PHP** — manutenção do PDV existente;
-* **Django** — desenvolvimento do novo sistema;
-* **Django REST Framework** — criação da API de integração;
-* **MongoDB** — banco de dados orientado a documentos;
-* **HTML e CSS** — estrutura e reestilização das telas;
-* **JavaScript** — apoio nas interações da interface;
-* **GitHub Projects** — organização de backlog, tarefas e sprints.
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"/>
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django"/>
+  <img src="https://img.shields.io/badge/Django%20REST-FF1709?style=for-the-badge&logo=django&logoColor=white" alt="Django REST"/>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB"/>
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+  <img src="https://img.shields.io/badge/GitHub%20Projects-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Projects"/>
+</p>
 ---
 
 ## Documentação e Planejamento
