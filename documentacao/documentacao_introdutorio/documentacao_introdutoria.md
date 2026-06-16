@@ -18,3 +18,6 @@ O servidor usa Python 3.6.8 do sistema. O venv garante que as versoes corretas d
 API REST construida com Django 3.2. Nao serve HTML - apenas recebe requisicoes HTTP do front-end e retorna JSON. Usa MongoEngine como ODM e pymongo para as aggregation pipelines dos relatorios.
 
 ![imagem das rotas/requisicoes](imagens_intro/requisicoes.png)
+
+![requisicoes-2.0](imagens_intro/requisicoes-2.0.png)
+
