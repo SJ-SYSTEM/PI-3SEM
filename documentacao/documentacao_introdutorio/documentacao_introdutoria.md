@@ -21,3 +21,10 @@ API REST construida com Django 3.2. Nao serve HTML - apenas recebe requisicoes H
 
 ![requisicoes-2.0](imagens_intro/requisicoes-2.0.png)
 
+<hr>
+
+###  settings.py — configuracoes criticas
+Controla todo o comportamento do Django. Pontos mais importantes:
+
+![imagens de settings-topico](imagens_intro/settings-png.png)
+
