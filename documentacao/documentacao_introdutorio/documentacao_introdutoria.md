@@ -44,3 +44,11 @@ Contem todas as views REST. Os relatorios usam pymongo direto para as aggregatio
 
 ![imagem de conteúdo de view.py](imagens_intro/imagem-views-py.png)
 ![Imagem de conteúdo de view.py 2.0](image.png)
+
+<hr>
+
+###  urls.py — ordem das rotas importa!
+
+Rotas especificas devem vir antes de rotas genericas para evitar conflito.
+
+![imagem de conteudo urls.py-topico](imagens_intro/imagem-urls-py-topico.png)
