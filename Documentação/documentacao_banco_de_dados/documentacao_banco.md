@@ -15,4 +15,32 @@
 
  ![Detalhes de array](imagens_banco/detalhes_array.png)
 
+ ## Collections
+
+ ### Clientes
+
+ ![Collection_cliente](imagens_banco/collection_clientes.png)
+
+ 
+
+ ### Produtos
+
+ ![Produtos](imagens_banco/collection_produtos.png)
+
+
+
+
+
+ ### Vendas
+
+
+![vendas](imagens_banco/collection_vendas.png)
+
+## Indices do MongoDB
+
+![Indices](imagens_banco/Indices.png)
+
+
+
+
 
