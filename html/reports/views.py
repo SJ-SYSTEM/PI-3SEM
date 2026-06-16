@@ -1,0 +1,264 @@
+from django.http import JsonResponse
+from django.views import View
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from .models import Produto, Cliente, Venda, RelatorioDiario
+from datetime import datetime
+import json
+
+
+def documento_para_dict(doc):
+    """Converte um documento MongoEngine para dicionário serializável."""
+    d = doc.to_mongo().to_dict()
+    d['id'] = str(d.pop('_id'))
+    for k, v in d.items():
+        if isinstance(v, datetime):
+            d[k] = v.isoformat()
+    return d
+
+
+# ══════════════════════════════════════
+#  PRODUTOS
+# ══════════════════════════════════════
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ProdutoListCreate(View):
+
+    def get(self, request):
+        """Lista todos os produtos."""
+        try:
+            categoria = request.GET.get('categoria')
+            status    = request.GET.get('status', 'ativo')
+
+            produtos = Produto.objects.filter(status=status)
+            if categoria:
+                produtos = produtos.filter(categoria=categoria)
+
+            data = [documento_para_dict(p) for p in produtos]
+            return JsonResponse({'total': len(data), 'data': data}, safe=False)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=500)
+
+    def post(self, request):
+        """Cria um novo produto."""
+        try:
+            body = json.loads(request.body)
+            produto = Produto(
+                nome           = body.get('nome'),
+                descricao      = body.get('descricao', ''),
+                preco_custo    = float(body.get('preco_custo', 0)),
+                preco_venda    = float(body.get('preco_venda', 0)),
+                estoque        = int(body.get('estoque', 0)),
+                estoque_minimo = int(body.get('estoque_minimo', 5)),
+                unidade        = body.get('unidade', 'un'),
+                categoria      = body.get('categoria', 'medicamento'),
+                lote           = body.get('lote', ''),
+                status         = body.get('status', 'ativo'),
+            )
+            if body.get('validade'):
+                produto.validade = datetime.fromisoformat(body['validade'])
+
+            produto.save()
+            return JsonResponse({'mensagem': 'Produto criado com sucesso!', 'id': str(produto.id)}, status=201)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=400)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ProdutoDetail(View):
+
+    def get(self, request, id):
+        """Retorna um produto pelo ID."""
+        try:
+            produto = Produto.objects.get(id=id)
+            return JsonResponse(documento_para_dict(produto))
+        except Produto.DoesNotExist:
+            return JsonResponse({'erro': 'Produto não encontrado'}, status=404)
+
+    def put(self, request, id):
+        """Atualiza um produto."""
+        try:
+            body    = json.loads(request.body)
+            produto = Produto.objects.get(id=id)
+            for campo, valor in body.items():
+                setattr(produto, campo, valor)
+            produto.atualizado = datetime.now()
+            produto.save()
+            return JsonResponse({'mensagem': 'Produto atualizado com sucesso!'})
+        except Produto.DoesNotExist:
+            return JsonResponse({'erro': 'Produto não encontrado'}, status=404)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=400)
+
+    def delete(self, request, id):
+        """Remove um produto."""
+        try:
+            produto = Produto.objects.get(id=id)
+            produto.delete()
+            return JsonResponse({'mensagem': 'Produto removido com sucesso!'})
+        except Produto.DoesNotExist:
+            return JsonResponse({'erro': 'Produto não encontrado'}, status=404)
+
+
+# ══════════════════════════════════════
+#  CLIENTES
+# ══════════════════════════════════════
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ClienteListCreate(View):
+
+    def get(self, request):
+        """Lista todos os clientes."""
+        try:
+            status   = request.GET.get('status', 'ativo')
+            clientes = Cliente.objects.filter(status=status)
+            data     = [documento_para_dict(c) for c in clientes]
+            return JsonResponse({'total': len(data), 'data': data}, safe=False)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=500)
+
+    def post(self, request):
+        """Cria um novo cliente."""
+        try:
+            body    = json.loads(request.body)
+            cliente = Cliente(
+                nome     = body.get('nome'),
+                cpf      = body.get('cpf', ''),
+                telefone = body.get('telefone', ''),
+                email    = body.get('email', ''),
+                endereco = body.get('endereco', ''),
+                status   = body.get('status', 'ativo'),
+            )
+            cliente.save()
+            return JsonResponse({'mensagem': 'Cliente criado com sucesso!', 'id': str(cliente.id)}, status=201)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=400)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class ClienteDetail(View):
+
+    def get(self, request, id):
+        """Retorna um cliente pelo ID."""
+        try:
+            cliente = Cliente.objects.get(id=id)
+            return JsonResponse(documento_para_dict(cliente))
+        except Cliente.DoesNotExist:
+            return JsonResponse({'erro': 'Cliente não encontrado'}, status=404)
+
+    def put(self, request, id):
+        """Atualiza um cliente."""
+        try:
+            body    = json.loads(request.body)
+            cliente = Cliente.objects.get(id=id)
+            for campo, valor in body.items():
+                setattr(cliente, campo, valor)
+            cliente.atualizado = datetime.now()
+            cliente.save()
+            return JsonResponse({'mensagem': 'Cliente atualizado com sucesso!'})
+        except Cliente.DoesNotExist:
+            return JsonResponse({'erro': 'Cliente não encontrado'}, status=404)
+
+    def delete(self, request, id):
+        """Remove um cliente."""
+        try:
+            cliente = Cliente.objects.get(id=id)
+            cliente.delete()
+            return JsonResponse({'mensagem': 'Cliente removido com sucesso!'})
+        except Cliente.DoesNotExist:
+            return JsonResponse({'erro': 'Cliente não encontrado'}, status=404)
+
+
+# ══════════════════════════════════════
+#  VENDAS
+# ══════════════════════════════════════
+
+@method_decorator(csrf_exempt, name='dispatch')
+class VendaListCreate(View):
+
+    def get(self, request):
+        """Lista todas as vendas."""
+        try:
+            status = request.GET.get('status', 'concluida')
+            vendas = Venda.objects.filter(status=status)
+            data   = [documento_para_dict(v) for v in vendas]
+            return JsonResponse({'total': len(data), 'data': data}, safe=False)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=500)
+
+    def post(self, request):
+        """Registra uma nova venda."""
+        try:
+            body  = json.loads(request.body)
+            venda = Venda(
+                cliente_id      = body.get('cliente_id', ''),
+                cliente_nome    = body.get('cliente_nome', ''),
+                total           = float(body.get('total', 0)),
+                desconto        = float(body.get('desconto', 0)),
+                forma_pagamento = body.get('forma_pagamento', 'dinheiro'),
+                status          = body.get('status', 'concluida'),
+            )
+            venda.save()
+            return JsonResponse({'mensagem': 'Venda registrada com sucesso!', 'id': str(venda.id)}, status=201)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=400)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class VendaDetail(View):
+
+    def get(self, request, id):
+        """Retorna uma venda pelo ID."""
+        try:
+            venda = Venda.objects.get(id=id)
+            return JsonResponse(documento_para_dict(venda))
+        except Venda.DoesNotExist:
+            return JsonResponse({'erro': 'Venda não encontrada'}, status=404)
+
+
+# ══════════════════════════════════════
+#  RELATÓRIOS
+# ══════════════════════════════════════
+
+class RelatorioDiarioList(View):
+
+    def get(self, request):
+        """Lista relatórios diários."""
+        try:
+            relatorios = RelatorioDiario.objects.all()
+            data       = [documento_para_dict(r) for r in relatorios]
+            return JsonResponse({'total': len(data), 'data': data}, safe=False)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=500)
+
+
+class EstoqueCritico(View):
+
+    def get(self, request):
+        """Lista produtos abaixo do estoque mínimo."""
+        try:
+            from mongoengine.queryset.visitor import Q
+            produtos = Produto.objects.filter(status='ativo')
+            criticos = [p for p in produtos if p.estoque <= p.estoque_minimo]
+            data     = [documento_para_dict(p) for p in criticos]
+            return JsonResponse({'total': len(data), 'data': data}, safe=False)
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=500)
+
+
+class TicketMedio(View):
+
+    def get(self, request):
+        """Calcula o ticket médio das vendas."""
+        try:
+            vendas = Venda.objects.filter(status='concluida')
+            total  = sum(v.total for v in vendas)
+            qtd    = vendas.count()
+            ticket = round(total / qtd, 2) if qtd > 0 else 0
+            return JsonResponse({
+                'qtd_vendas':   qtd,
+                'total':        total,
+                'ticket_medio': ticket
+            })
+        except Exception as e:
+            return JsonResponse({'erro': str(e)}, status=500)
