@@ -1,0 +1,85 @@
+<?php
+session_start();
+
+$msg = isset($_GET['msg']) ? "Usuarioo cadastrado com sucesso!" : "";
+$erro = isset($_GET['erro']) ? "Erro ao cadastrar usuario!" : "";
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - Sistema de Farmacia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+<div class="login-bg">
+
+    <div class="login-card">
+	
+	<div class="shape-top"></div>
+	<div class="shape-bottom"></div>
+
+        <div class="logo-area">
+            <div class="logo-circle">+</div>
+            <h2>Criar Conta</h2>
+            <p class="text-muted">Preencha os dados abaixo</p>
+        </div>
+
+        <?php if ($msg): ?>
+            <div class="alert alert-success text-center">
+                <?= $msg ?>
+            </div>
+        <?php endif; ?>
+
+
+        <?php if ($erro): ?>
+            <div class="alert alert-danger text-center">
+                <?= $erro ?>
+            </div>
+        <?php endif; ?>
+
+
+        <form method="POST" action="php/POST_cadastro.php">
+
+            <div class="mb-3">
+                <label class="form-label">Nome</label>
+                <input type="text" name="nome" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input type="text" name="usuario" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <input type="password" name="senha" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-login w-100">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="login.php">Ja tem conta? Fazer login</a>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
