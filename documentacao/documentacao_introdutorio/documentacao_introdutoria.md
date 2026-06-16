@@ -43,7 +43,7 @@ Define os documentos MongoDB. Cada classe vira uma collection no banco. ItemVend
 Contem todas as views REST. Os relatorios usam pymongo direto para as aggregation pipelines. Ao finalizar uma venda, o Django valida estoque, salva a venda e decrementa o estoque automaticamente.
 
 ![imagem de conteúdo de view.py](imagens_intro/imagem-views-py.png)
-![Imagem de conteúdo de view.py 2.0](image.png)
+![Imagem de conteúdo de view.py 2.0](imagens_intro/imagem-view-py-2.0.png)
 
 <hr>
 
