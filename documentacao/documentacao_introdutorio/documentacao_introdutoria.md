@@ -28,3 +28,8 @@ Controla todo o comportamento do Django. Pontos mais importantes:
 
 ![imagens de settings-topico](imagens_intro/settings-png.png)
 
+###  models.py — estrutura dos documentos
+Define os documentos MongoDB. Cada classe vira uma collection no banco. ItemVenda e um EmbeddedDocument - nao tem collection propria, fica dentro de Venda.
+
+![imagem das classes/collections](imagens_intro/classes-mongoDB.png)
+
