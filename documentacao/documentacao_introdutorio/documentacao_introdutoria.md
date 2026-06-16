@@ -26,10 +26,21 @@ API REST construida com Django 3.2. Nao serve HTML - apenas recebe requisicoes H
 ###  settings.py — configuracoes criticas
 Controla todo o comportamento do Django. Pontos mais importantes:
 
+
 ![imagens de settings-topico](imagens_intro/settings-png.png)
+
+<hr>
 
 ###  models.py — estrutura dos documentos
 Define os documentos MongoDB. Cada classe vira uma collection no banco. ItemVenda e um EmbeddedDocument - nao tem collection propria, fica dentro de Venda.
 
 ![imagem das classes/collections](imagens_intro/classes-mongoDB.png)
 
+<hr>
+
+###  views.py — logica de negocio
+
+Contem todas as views REST. Os relatorios usam pymongo direto para as aggregation pipelines. Ao finalizar uma venda, o Django valida estoque, salva a venda e decrementa o estoque automaticamente.
+
+![imagem de conteúdo de view.py](imagens_intro/imagem-views-py.png)
+![Imagem de conteúdo de view.py 2.0](image.png)
