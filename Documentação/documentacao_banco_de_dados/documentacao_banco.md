@@ -9,3 +9,10 @@
 
  ![banco_detalhe](imagens_banco/banco_detalhe.png)
 
+
+## Por que MongoDB e nao SQL?
+ ### Os itens de uma venda sao naturalmente um array dentro do documento da venda (embedded documents). Isso evita JOINs e permite buscar uma venda completa em uma unica query.
+
+ ![Detalhes de array](imagens_banco/detalhes_array.png)
+
+
