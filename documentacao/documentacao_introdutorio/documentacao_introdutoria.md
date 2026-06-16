@@ -3,5 +3,12 @@
 
 Este documento descreve cada pasta e arquivo do projeto SJ System, indicando sua camada (back-end, front-end ou banco de dados), sua funcao e como se relaciona com os demais componentes.
 
-![camadas_da_aplicacao](imagens_intro/camadas-doc.png)
+![imagem - camadas da aplicacao](imagens_intro/camadas-doc.png)
 
+## Raizes do Servidor - /var/www/
+![imagem - raiz do servidor](imagens_intro/raiz-do-servidor.png)
+
+### Por que o venv e importante?
+O servidor usa Python 3.6.8 do sistema. O venv garante que as versoes corretas das bibliotecas sejam usadas sem interferir em outros projetos. Sempre ativar antes de rodar o Django.
+
+<hr>
