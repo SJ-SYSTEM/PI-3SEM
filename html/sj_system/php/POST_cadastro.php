@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = $_POST['email'] ?? '';
     $senha    = $_POST['senha'] ?? '';
 
-    //  Criptografar senha
     $hash = password_hash($senha, PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO usuario (nome, usuario, email, senha) VALUES (?, ?, ?, ?)");

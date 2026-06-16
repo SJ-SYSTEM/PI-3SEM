@@ -13,10 +13,8 @@ ini_set('display_errors', 1);
     <title>Login - Sistema de Farmáa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Seu CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -46,14 +44,12 @@ if (isset($_GET['erro'])) {
 }
 ?>
 
-        <!-- ERRO -->
         <?php if ($erro): ?>
             <div class="alert alert-danger text-center">
                 <?= $erro ?>
             </div>
         <?php endif; ?>
 
-        <!-- FORM -->
         <form method="POST" action="php/POST_login.php">
 
             <div class="mb-3">

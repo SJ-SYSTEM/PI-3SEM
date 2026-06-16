@@ -12,10 +12,8 @@ $erro = isset($_GET['erro']) ? "Erro ao cadastrar usuario!" : "";
     <title>Cadastro - Sistema de Farmacia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Seu CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -34,13 +32,11 @@ $erro = isset($_GET['erro']) ? "Erro ao cadastrar usuario!" : "";
             <p class="text-muted">Preencha os dados abaixo</p>
         </div>
 
-        <!-- Mensagens -->
         <?php if ($msg): ?>
             <div class="alert alert-success text-center">
                 <?= $msg ?>
             </div>
         <?php endif; ?>
-
 
 
         <?php if ($erro): ?>
@@ -50,10 +46,6 @@ $erro = isset($_GET['erro']) ? "Erro ao cadastrar usuario!" : "";
         <?php endif; ?>
 
 
-
-
-
-        <!-- FORM -->
         <form method="POST" action="php/POST_cadastro.php">
 
             <div class="mb-3">
