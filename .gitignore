@@ -1,0 +1,9 @@
+html/venv/
+html/db.sqlite3
+html/**/__pycache__/
+html/**/*.pyc
+
+venv/
+db.sqlite3
+__pycache__/
+*.pyc
