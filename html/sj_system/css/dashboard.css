@@ -1,0 +1,383 @@
+/* ══════════════════════════════════════
+   SJ System — Dashboard CSS
+   Padrão: vermelho #b90504 / cinza #333
+   Bootstrap 5.3
+   ══════════════════════════════════════ */
+
+:root {
+    --color1:   #f6f6f6;
+    --color2:   #e8e8e8;
+    --color3:   #333333;
+    --color4:   #990100;
+    --color5:   #b90504;
+    --sidebar-w: 240px;
+    --topbar-h:  60px;
+}
+
+/* ── Reset ── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--color1);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════ */
+.sidebar {
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color2);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+    z-index: 100;
+    overflow-y: auto;
+}
+
+/* Logo / título */
+.sidebar-header {
+    background: var(--color5);
+    padding: 20px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-header .logo-circle {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.sidebar-header h4 {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.sidebar-header small {
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+}
+
+/* Seção de menu */
+.sidebar-menu {
+    flex: 1;
+    padding: 16px 12px;
+}
+
+.sidebar-section {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #aaa;
+    padding: 12px 8px 6px;
+    font-weight: bold;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--color3);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 3px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar a:hover {
+    background: #fef0f0;
+    color: var(--color5);
+}
+
+.sidebar a.active {
+    background: var(--color5);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.sidebar a .icon {
+    font-size: 17px;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Rodapé da sidebar */
+.sidebar-footer {
+    padding: 14px 12px;
+    border-top: 1px solid var(--color2);
+}
+
+.sidebar-footer a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--color5);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.sidebar-footer a:hover {
+    background: #fef0f0;
+}
+
+/* ══════════════════════════════════════
+   TOPBAR
+   ══════════════════════════════════════ */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-w);
+    right: 0;
+    height: var(--topbar-h);
+    background: #ffffff;
+    border-bottom: 1px solid var(--color2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 99;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.topbar-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--color3);
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--color3);
+}
+
+.topbar-user .avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--color5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* ══════════════════════════════════════
+   CONTEÚDO PRINCIPAL
+   ══════════════════════════════════════ */
+.main {
+    margin-left: var(--sidebar-w);
+    margin-top: var(--topbar-h);
+    padding: 24px;
+    min-height: calc(100vh - var(--topbar-h));
+}
+
+/* ── Cards ── */
+.card-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--color2);
+}
+
+.card-box h5 {
+    color: var(--color3);
+    font-weight: bold;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color5);
+    display: inline-block;
+}
+
+/* ── Cards de métricas ── */
+.card-metrica {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--color2);
+    border-left: 4px solid var(--color5);
+    margin-bottom: 16px;
+}
+
+.card-metrica .valor {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color5);
+}
+
+.card-metrica .label {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* ── Produto item ── */
+.produto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid var(--color2);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: var(--color1);
+    transition: border-color 0.2s;
+}
+
+.produto:hover {
+    border-color: var(--color5);
+}
+
+.produto .nome {
+    font-weight: bold;
+    color: var(--color3);
+}
+
+.produto .preco {
+    color: var(--color5);
+    font-weight: bold;
+}
+
+/* ── Total ── */
+.total {
+    color: var(--color5);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* ── Botões ── */
+.btn-finalizar {
+    background: var(--color5);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-finalizar:hover {
+    background: var(--color4);
+    color: white;
+}
+
+.btn-acao {
+    background: white;
+    color: var(--color5);
+    border: 2px solid var(--color5);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.btn-acao:hover {
+    background: var(--color5);
+    color: white;
+}
+
+/* ── Tabelas ── */
+.table thead th {
+    background: var(--color5);
+    color: white;
+    border: none;
+    font-size: 13px;
+}
+
+.table tbody tr:hover {
+    background: #fef0f0;
+}
+
+/* ── Formulários ── */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color5);
+    box-shadow: 0 0 0 0.2rem rgba(185,5,4,0.15);
+}
+
+/* ── Badges ── */
+.badge-ativo {
+    background: #d4edda;
+    color: #155724;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.badge-inativo {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* ── Alerts ── */
+.alert-sj {
+    background: #fef0f0;
+    border: 1px solid var(--color5);
+    border-left: 4px solid var(--color5);
+    border-radius: 8px;
+    color: var(--color4);
+    padding: 12px 16px;
+    margin-bottom: 16px;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .topbar {
+        left: 0;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+}
